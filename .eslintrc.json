@@ -1,3 +1,36 @@
 {
-  "extends": "next/core-web-vitals"
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect" // para o eslint detectar a versão do react
+        }
+    },
+    "extends": [
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "airbnb"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react",
+        "@typescript-eslint",
+        "react-hooks"
+    ],
+    "rules": {
+        "react-hooks/rules-of-hooks": "warn",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/prop-types": "off", // com typescript não precisa desta regra
+        "react/react-in-jsx-scope": "off", // não precisa importar o react no next
+        "@typescript-eslint/explicit-module-boundary-types": "off"
+    }
 }
