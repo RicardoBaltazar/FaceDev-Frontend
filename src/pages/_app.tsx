@@ -1,8 +1,26 @@
+/* eslint-disable react/no-invalid-html-attribute */
 /* eslint-disable react/jsx-props-no-spreading */
-import '../styles/globals.css';
+import { AppProps } from 'next/app';
+import Head from 'next/head';
 
-function MyApp({ Component, pageProps }: any) {
-  return <Component {...pageProps} />;
+import GlobalStyles from '../styles/global';
+
+function App({ Component, pageProps }: AppProps) {
+  return (
+    <>
+      <Head>
+        <title>FaceDev</title>
+        <link rel="shortcut icon" href="/img/icon-512.png" />
+        <link rel="apple-touch-icon" href="/img/icon-512.png" />
+        <meta
+          name="description"
+          content="A social networking application created to practice programming"
+        />
+      </Head>
+      <GlobalStyles />
+      <Component {...pageProps} />
+    </>
+  );
 }
 
-export default MyApp;
+export default App;

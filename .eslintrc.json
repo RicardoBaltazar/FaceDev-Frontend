@@ -35,6 +35,9 @@
         "react/react-in-jsx-scope": "off", // não precisa importar o react no next
         "@typescript-eslint/explicit-module-boundary-types": "off",
         "linebreak-style": 0,
-        "react/jsx-filename-extension": "off"
+        "react/jsx-filename-extension": "off",
+        "comma-dangle": "off",
+        "import/extensions": "off",
+        "import/no-unresolved": "off"
     }
 }
