@@ -7,13 +7,11 @@ export const Wrapper = styled.div`
 `;
 
 export const Main = styled.main`
-border: 1px solid blue;
 display: flex;
 justify-content: space-around;
 `;
 
 export const Feed = styled.div`
-border: 1px solid red;
 width: 90%;
 display: flex;
 flex-direction: column;
@@ -37,4 +35,42 @@ export const Post = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
   border-radius: 8px;
   margin: 0.5rem 0;
+`;
+
+export const PostForm = styled.form`
+background-color: var(--white);
+  font-size: 1rem;
+  padding: 0.6rem;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
+  border-radius: 8px;
+  margin: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
+export const PostInput = styled.input`
+width: 90%;
+margin: 0.2rem auto;
+padding: 0.8rem 0.6rem;
+border: none;
+outline: none;
+`;
+
+export const Button = styled.button`
+background-color: var(--primary);
+color: var(--white);
+font-weight: bold;
+border: none;
+outline: none;
+border-radius: 4px;
+padding: 0.4rem 1.8rem;
+margin: 0.4rem 0;
+&:hover,
+    &:focus {
+        filter: brightness(0.8);
+    }
+    &:disabled {
+        opacity: 50%;
+    }
 `;

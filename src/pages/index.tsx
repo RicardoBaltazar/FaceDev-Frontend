@@ -12,6 +12,13 @@ export default function Home() {
         <S.Feed>
           <S.Title>News Feed</S.Title>
 
+          <S.PostForm>
+            <S.PostInput type="text" placeholder="Escreva Algo..." />
+            <S.Button>
+              Post
+            </S.Button>
+          </S.PostForm>
+
           <S.Post>
             <p>Bom dia, esta é uma postagem de teste!</p>
           </S.Post>
