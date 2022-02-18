@@ -1,7 +1,28 @@
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import * as S from '../styles/feed';
+import api from '../services/api';
+
+type Posts = {
+  post: string
+}
 
 export default function Home() {
+  const [post, setPost] = useState<Posts[]>([]);
+
+  useEffect(() => {
+    api.get('/post')
+      .then((response: any) => {
+        console.log(response);
+        console.log(response.data);
+        setPost(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+        console.log(error.response);
+      });
+  }, []);
+
   return (
     <S.Wrapper>
 
@@ -19,13 +40,17 @@ export default function Home() {
             </S.Button>
           </S.PostForm>
 
-          <S.Post>
-            <p>Bom dia, esta é uma postagem de teste!</p>
-          </S.Post>
-
-          <S.Post>
-            <p>Primeiro Post</p>
-          </S.Post>
+          <ul>
+            {
+              post.map((item: any) => {
+                return (
+                  <S.Post key={item.post}>
+                    <p>{item.post}</p>
+                  </S.Post>
+                );
+              })
+            }
+          </ul>
         </S.Feed>
 
       </S.Main>
