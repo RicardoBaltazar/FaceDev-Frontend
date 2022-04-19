@@ -9,14 +9,15 @@ export const Wrapper = styled.div`
 export const Main = styled.main`
     display: flex;
     justify-content: space-around;
+    padding: 0 1rem;
 `;
 
 export const Feed = styled.div`
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-@media (min-width: 900px) {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  @media (min-width: 900px) {
     width: 480px;
   }
 `;
@@ -73,4 +74,35 @@ margin: 0.4rem 0;
     &:disabled {
         opacity: 50%;
     }
+`;
+
+export const SideBox = styled.div`
+    display: none;
+  @media (min-width: 900px) {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 25%;
+    /* width: 480px; */
+  }
+  `;
+
+export const BasicCard = styled.div`
+  background-color: var(--white);
+  font-size: 1rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
+  border-radius: 8px;
+  margin: 0.4rem 0;
+`;
+
+export const ProfileImage = styled.img`
+  /* width: 50px;
+  height: 50px; */
+  border-radius: 50%;
+`;
+
+export const ProfileName = styled.p`
+  font-weight: 600;
 `;
