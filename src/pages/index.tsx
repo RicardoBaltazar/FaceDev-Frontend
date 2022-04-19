@@ -1,27 +1,13 @@
-import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import * as S from '../styles/feed';
-import api from '../services/api';
+import { useFetch } from '../hooks/useFetch';
 
 type Posts = {
   post: string
 }
 
-export default function Home() {
-  const [post, setPost] = useState<Posts[]>([]);
-
-  useEffect(() => {
-    api.get('/post')
-      .then((response: any) => {
-        console.log(response);
-        console.log(response.data);
-        setPost(response.data);
-      })
-      .catch((error: any) => {
-        console.log(error);
-        console.log(error.response);
-      });
-  }, []);
+function Home() {
+  const { data: post, isFetching } = useFetch<Posts[]>('/post');
 
   return (
     <S.Wrapper>
@@ -41,8 +27,9 @@ export default function Home() {
           </S.PostForm>
 
           <ul>
+            {isFetching && <p>carregando...</p>}
             {
-              post.map((item: any) => {
+              post?.map((item: any) => {
                 return (
                   <S.Post key={item.post}>
                     <p>{item.post}</p>
@@ -58,3 +45,14 @@ export default function Home() {
     </S.Wrapper>
   );
 }
+
+export default Home;
+
+// export const getServerSideProps = async () => {
+//   // const data = await fetchData();
+
+//   return {
+//     props: {
+//     }
+//   };
+// };
