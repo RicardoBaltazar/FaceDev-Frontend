@@ -19,6 +19,7 @@ export const Feed = styled.div`
   text-align: left;
   @media (min-width: 900px) {
     width: 480px;
+    margin: 0 .3rem;
   }
 `;
 

@@ -6,8 +6,10 @@ type Posts = {
   post: string
 }
 
-function Home() {
+function Home(props: any) {
   const { data: post, isFetching } = useFetch<Posts[]>('/post');
+  const { response } = props;
+  console.log(response);
 
   return (
     <S.Wrapper>
@@ -61,7 +63,11 @@ function Home() {
         <S.SideBox>
           <S.Title>Featured Video</S.Title>
           <S.BasicCard>
-            <p>loren</p>
+            <iframe
+              src="https://www.youtube.com/embed/pg3nRPk13Js"
+              title="YouTube video player"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
           </S.BasicCard>
 
         </S.SideBox>
