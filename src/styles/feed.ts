@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
     width: 100%;
+    min-height: 100vh;
     background-color: var(--background);
-    height: 100vh;
 `;
 
 export const Main = styled.main`
@@ -54,7 +54,7 @@ export const PostForm = styled.form`
 export const PostInput = styled.input`
     width: 90%;
     margin: 0.2rem auto;
-    padding: 0.8rem 0.6rem;
+    padding: 0.8rem 0.2rem;
     border: none;
     outline: none;
 `;

@@ -1,15 +1,27 @@
+import { useState } from 'react';
 import Header from '../components/Header';
 import * as S from '../styles/feed';
 import { useFetch } from '../hooks/useFetch';
+import api from '../services/api';
 
 type Posts = {
   post: string
 }
 
-function Home(props: any) {
-  const { data: post, isFetching } = useFetch<Posts[]>('/post');
-  const { response } = props;
-  console.log(response);
+function Home() {
+  const { data: posts, isFetching } = useFetch<Posts[]>('/post');
+  const [newPost, setNewPost] = useState<string>('');
+
+  // const handlePost = async (event: { preventDefault: () => void }) => {
+  const handlePost = async () => {
+    // event.preventDefault();
+    try {
+      const resp = await api.post('/post', { post: newPost });
+      console.log(resp.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <S.Wrapper>
@@ -39,9 +51,13 @@ function Home(props: any) {
         <S.Feed>
           <S.Title>News Feed</S.Title>
 
-          <S.PostForm>
-            <S.PostInput type="text" placeholder="Escreva Algo..." />
-            <S.Button>
+          {/* <S.PostForm onSubmit={(event) => handlePost(event)}> */}
+          <S.PostForm onSubmit={() => handlePost()}>
+            <S.PostInput
+              placeholder="Escreva Algo..."
+              onChange={(e: any) => setNewPost(e.target.value)}
+            />
+            <S.Button type="submit">
               Post
             </S.Button>
           </S.PostForm>
@@ -49,7 +65,7 @@ function Home(props: any) {
           <ul>
             {isFetching && <p>carregando...</p>}
             {
-              post?.map((item: any) => {
+              posts?.map((item: any) => {
                 return (
                   <S.Post key={item.post}>
                     <p>{item.post}</p>
@@ -81,10 +97,11 @@ function Home(props: any) {
 export default Home;
 
 // export const getServerSideProps = async () => {
-//   // const data = await fetchData();
-
+//   const response = await api.get('/post');
+//   const posts = response.data;
 //   return {
 //     props: {
+//       posts
 //     }
 //   };
 // };
