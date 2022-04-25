@@ -59,6 +59,12 @@ export const PostInput = styled.input`
     outline: none;
 `;
 
+export const InputCount = styled.span`
+  color: var(--primary);
+  font-weight: 600;
+  margin: 0 .5rem;
+`;
+
 export const Button = styled.button`
 background-color: var(--primary);
 color: var(--white);

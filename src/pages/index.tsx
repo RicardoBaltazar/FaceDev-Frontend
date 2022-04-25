@@ -11,6 +11,7 @@ type Posts = {
 function Home() {
   const { data: posts, isFetching } = useFetch<Posts[]>('/post');
   const [newPost, setNewPost] = useState<string>('');
+  const [count, setCount] = useState(0);
 
   // const handlePost = async (event: { preventDefault: () => void }) => {
   const handlePost = async () => {
@@ -22,6 +23,11 @@ function Home() {
       console.error(err);
     }
   };
+
+  function handleOnchangePost(event: any, length: number) {
+    setNewPost(event);
+    setCount(() => length);
+  }
 
   return (
     <S.Wrapper>
@@ -54,12 +60,18 @@ function Home() {
           {/* <S.PostForm onSubmit={(event) => handlePost(event)}> */}
           <S.PostForm onSubmit={() => handlePost()}>
             <S.PostInput
+              required
+              maxLength={240}
               placeholder="Escreva Algo..."
-              onChange={(e: any) => setNewPost(e.target.value)}
+              // onChange={(e: any) => setNewPost(e.target.value)}
+              onChange={(e: any) => handleOnchangePost(e.target.value, e.target.value.length)}
             />
-            <S.Button type="submit">
-              Post
-            </S.Button>
+            <div>
+              <S.InputCount>{count}</S.InputCount>
+              <S.Button type="submit">
+                Post
+              </S.Button>
+            </div>
           </S.PostForm>
 
           <ul>
