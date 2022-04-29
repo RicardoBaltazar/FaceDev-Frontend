@@ -37,6 +37,18 @@ export const Post = styled.div`
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
   border-radius: 8px;
   margin: 0.8rem 0;
+  `;
+
+export const LikeButton = styled.button<{selected: any}>`
+  display: flex;
+  justify-content: space-around;
+  color: var(--primary);
+  background-color: var(--background);
+  color: ${(props) => (props.selected ? '#553CFB' : '#ffffff')};
+  border: 1px solid var(--background);
+  border-radius: 8px;
+  padding: 0.4rem;
+  margin-left: auto;
 `;
 
 export const PostForm = styled.form`

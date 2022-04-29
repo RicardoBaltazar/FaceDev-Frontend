@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { AiFillLike } from 'react-icons/ai';
+
+import { useFetch } from '../hooks/useFetch';
 import Header from '../components/Header';
 import * as S from '../styles/feed';
-import { useFetch } from '../hooks/useFetch';
 import api from '../services/api';
 
 type Posts = {
@@ -11,7 +13,8 @@ type Posts = {
 function Home() {
   const { data: posts, isFetching } = useFetch<Posts[]>('/post');
   const [newPost, setNewPost] = useState<string>('');
-  const [count, setCount] = useState(0);
+  const [isSelected, setIsSelected] = useState<boolean>(false);
+  const [count, setCount] = useState<number>(0);
 
   // const handlePost = async (event: { preventDefault: () => void }) => {
   const handlePost = async () => {
@@ -28,6 +31,10 @@ function Home() {
     setNewPost(event);
     setCount(() => length);
   }
+
+  const handleLike = () => {
+    setIsSelected(!isSelected);
+  };
 
   return (
     <S.Wrapper>
@@ -81,6 +88,14 @@ function Home() {
                 return (
                   <S.Post key={item.post}>
                     <p>{item.post}</p>
+                    <S.LikeButton
+                      type="button"
+                      selected={isSelected}
+                      // onClick={() => setIsSelected(!isSelected)}
+                      onClick={() => handleLike()}
+                    >
+                      <AiFillLike />
+                    </S.LikeButton>
                   </S.Post>
                 );
               })
