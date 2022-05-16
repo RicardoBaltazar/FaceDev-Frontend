@@ -3,10 +3,11 @@ import { createGlobalStyle } from 'styled-components';
 const GlobalStyles = createGlobalStyle`
 
 :root {
-    --white: #FFFFFF;
-    --black: #1C1C1C;
-    --background: #DDE1E9;
-    --primary: #553CFB;
+    --white: ${(props) => props.theme.white};
+    --black: ${(props) => props.theme.black};
+    --background: ${(props) => props.theme.background};
+    --primary: ${(props) => props.theme.primary};
+    --card: ${(props) => props.theme.card};
 }
 
   * {

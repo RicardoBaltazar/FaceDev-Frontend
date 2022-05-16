@@ -1,6 +1,11 @@
+import { useContext } from 'react';
+import Switch from 'react-switch';
+import { ThemeContext } from '../../pages/_app';
 import * as S from './styles';
 
 function Header() {
+  const { isLightTheme, toggleTheme } = useContext(ThemeContext);
+
   return (
     <S.Header>
       <S.Menu>
@@ -11,11 +16,27 @@ function Header() {
           <S.Item>About Us</S.Item>
         </S.List>
 
-        <S.Button
-          type="button"
-        >
-          LOGOUT
-        </S.Button>
+        <div>
+          <Switch
+            onChange={toggleTheme}
+            checked={!isLightTheme}
+            checkedIcon={false}
+            uncheckedIcon={false}
+            height={10}
+            width={40}
+            handleDiameter={20}
+            onHandleColor="#DDE1E9"
+            offHandleColor="#DDE1E9"
+            offColor="#191919"
+            onColor="#FFFFFF"
+          />
+          <S.Button
+            type="button"
+          >
+            LOGOUT
+          </S.Button>
+        </div>
+
       </S.Menu>
     </S.Header>
   );

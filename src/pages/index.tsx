@@ -32,10 +32,6 @@ function Home() {
     setCount(() => length);
   }
 
-  const handleLike = () => {
-    setIsSelected(!isSelected);
-  };
-
   return (
     <S.Wrapper>
 
@@ -91,8 +87,7 @@ function Home() {
                     <S.LikeButton
                       type="button"
                       selected={isSelected}
-                      // onClick={() => setIsSelected(!isSelected)}
-                      onClick={() => handleLike()}
+                      onClick={() => setIsSelected(!isSelected)}
                     >
                       <AiFillLike />
                     </S.LikeButton>
