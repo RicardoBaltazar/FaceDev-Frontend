@@ -24,14 +24,14 @@ export const Feed = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-size: 1.4rem;
-    font-weight: bold;
-    color: var(--black);
-    margin: 1.6rem 0;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--black);
+  margin: 1.6rem 0;
 `;
 
 export const Post = styled.div`
-    background-color: var(--white);
+  background-color: var(--card);
   font-size: 1rem;
   padding: 1rem;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
@@ -39,7 +39,7 @@ export const Post = styled.div`
   margin: 0.8rem 0;
   `;
 
-export const LikeButton = styled.button<{selected: any}>`
+export const LikeButton = styled.button<{ selected: boolean }>`
   display: flex;
   justify-content: space-around;
   color: var(--primary);
@@ -52,7 +52,7 @@ export const LikeButton = styled.button<{selected: any}>`
 `;
 
 export const PostForm = styled.form`
-    background-color: var(--white);
+  background-color: var(--card);
   font-size: 1rem;
   padding: 0.6rem;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.05);
@@ -107,7 +107,7 @@ export const SideBox = styled.div`
   `;
 
 export const BasicCard = styled.div`
-  background-color: var(--white);
+  background-color: var(--card);
   font-size: 1rem;
   padding: 1rem;
   text-align: center;
